@@ -1,4 +1,0 @@
-# Input file
-input=/input/pig/param/sample.txt
-# Output file
-output=/output/pig
