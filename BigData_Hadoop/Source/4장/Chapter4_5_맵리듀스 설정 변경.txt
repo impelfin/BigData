@@ -1,0 +1,37 @@
+<¸Ê¸®µà½º ¼³Á¤ º¯°æÇÏ±â>
+
+
+yarn.app.mapreduce.am.staging-dir: 
+
+
+<property>
+   <name>yarn.app.mapreduce.am.staging-dir</name>
+   <value>/user</value>
+ </property>
+
+
+
+mapreduce.jobhistory.address: 
+
+<property>
+   <name>mapreduce.jobhistory.address</name>
+   <value>hadoop03.localhost:10020</value>
+</property>
+
+
+
+mapreduce.jobhistory.webapp.address: 
+
+<property>
+  <name>mapreduce.jobhistory.webapp.address</name>
+  <value>hadoop3.localhost:19888</value>
+</property>
+
+
+
+mapreduce.jobhistory.intermediate-done-dir: 
+
+/user
+/user/history
+/user/history/done
+/user/history/doneintermediate

@@ -1,0 +1,16 @@
+<액션 사용되는 RDD 오퍼레이션 예제들(Scala 코드)>
+
+scala> val mydata = sc.textFile ("purplecow.txt")
+scala> mydata.count()
+4
+scala> for (line <- mydata.take(2))
+            Println(line)
+I've never seen a purple cow.
+I never hope to see one.
+
+
+
+
+<두 가지 일반 변환 오퍼레이션(flatMap과 distinct)를 사용하는 예제>
+
+sc.textFile(file).flatMap(line=> line.split(' ')).distinct()

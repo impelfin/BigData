@@ -1,0 +1,64 @@
+<WorkCount로 다시 보는 Spark 스트리밍>
+
+
+$ nc -lk 8585
+
+
+
+$ spark-shell &#8211;driver-memory 1G
+
+
+
+scala> import org.apache.spark._
+scala> import org.apache.spark.streaming._
+scala> import org.apache.spark.streaming.StreamingContext._
+
+
+
+scala> val ssc = new StreamingContext(sc, Seconds(3))
+
+
+
+scala> val lines = ssc.socketTextStream("localhost",8585)
+
+
+
+scala> val wordsFlatMap = lines.flatMap(_.split(" "))
+
+
+
+scala> val wordsMap = wordsFlatMap.map( w => (w,1))
+
+
+
+scala> val wordCount = wordsMap.reduceByKey( (a,b) => (a+b))
+
+
+
+scala> ssc.start
+
+
+
+# nc -lk 8585
+to be or not to be
+
+
+
+-------------------------------------------
+Time: 1461605982000 ms
+-------------------------------------------
+(not,1)
+(or,1)
+(be,2)
+(to,2)
+
+16/04/25 12:39:42 INFO JobScheduler: Finished job streaming job
+1461605982000 ms.0 from job set of time 1461605982000 ms
+16/04/25 12:39:42 INFO ShuffledRDD: Removing RDD 51 from persistence
+list
+
+
+
+
+
+

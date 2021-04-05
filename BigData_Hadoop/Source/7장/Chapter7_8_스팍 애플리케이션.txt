@@ -1,0 +1,13 @@
+<Spark 애플리케이션이 SparkContext을 어떻게 만드는지 보여준다>
+
+val conf = new SparkConf().setAppName(appName).setMaster(master)
+new SparkContext(conf)
+
+
+
+$ spark-shell
+...
+16/04/27 10:46:26 INFO SparkILoop: Created sql context (with Hive support)..
+SQL context available as sqlContext.
+
+scala>

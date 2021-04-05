@@ -1,0 +1,23 @@
+<아카이브 스토리지 만들기>
+
+
+$ $HADOOP_PREFIX/sbin/hadoop-daemon.sh stop datanode
+
+
+
+<property>
+<name>dfs.data.dir</name>
+<value>[ARCHIVE]file:///u01/data/dfs/</value>
+</property>
+
+
+
+$ hdfs dfsadmin &#8211;setStoragePolicy /cold1      COLD
+
+
+
+$ $HADOOP_PREFIX/sbin/hadoop-daemon.sh start datanode
+
+
+
+$ hdfs move   /cold1/testfile

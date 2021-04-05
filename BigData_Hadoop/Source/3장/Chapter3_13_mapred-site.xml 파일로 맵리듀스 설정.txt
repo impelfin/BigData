@@ -1,0 +1,11 @@
+<mapred-site.xml 파일로 맵리듀스 설정>
+
+
+# cp mapred-site.xml.template mapred-site.xml
+
+<mapred-site.xml 파일을 만들고 나면 다음과 같이 수정한다.>
+
+<property>
+  <name>mapreduce.framework.name</name>
+  <value>yarn</value>
+</property>

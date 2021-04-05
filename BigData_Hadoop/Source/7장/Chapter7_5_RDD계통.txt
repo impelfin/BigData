@@ -1,0 +1,13 @@
+<RDD °èÅë(Lineage)>
+
+
+scala> val mydata_filt =
+     | sc.textFile("purplecow.txt").
+     | map(line => line.toUpperCase()).
+     | filter(line => line.startsWith("I"))
+16/04/27 10:52:39 INFO SparkContext: Created broadcast 0 from textFile at
+<console>:22
+mydata_filt: org.apache.spark.rdd.RDD[String] = MapPartitionsRDD[3] at filter at
+<console>:24
+scala>
+Scala> mydata_filt.todeBugString

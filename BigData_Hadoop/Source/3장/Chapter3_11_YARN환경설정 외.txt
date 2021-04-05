@@ -1,0 +1,23 @@
+<YARN 환경 설정하기>
+
+export   JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/
+export   YARN_HEAPSIZE=500
+export   YARN_RESOURCEMANAGER_HEAPSIZE=500
+export   YARN_NODEMANAGER_HEAPSIZE=500
+export   YARN_PID_DIR=/var/run/hadoop/yarn
+export   YARN_LOG_DIR=/var/log/hadoop/yarn
+
+
+<맵리듀스 환경 설정하기>
+
+export   JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/
+export   HADOOP_MAPRED_IDENT_STRING=mapred
+export   HADOOP_MAPRED_PID_DIR=/var/run/hadoop/mapred
+export   HADOOP_MAPRED_LOG_DIR==/var/log/hadoop/mapred
+export   HADOOP_JOB_HISTORYSERVER_HEAPSIZE=250
+
+<작은 클러스터를 위해 힙 크기를 조절하기>
+
+HADOOP_HEAPSIZE = 500                     // hadoop-env.sh 파일 지정
+YARN_HEAPSIZE = 500                       // yarn-env.sh 파일 지정
+HADOOP_JOB_HISTORYSERVER_HEAPSIZE= 250    // mapred-env.sh 파일 지정

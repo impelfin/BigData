@@ -1,0 +1,36 @@
+<YARN에서 클라이언트 모드로 Spark 어플리케이션 실행시키기>
+
+$/path /to/spark/bin/spark-submit &#8211;class path.to.main.Class      \
+ --master yarn &#8211;deploy-mode client </path/to/app-jar> [app-args]
+
+
+
+<실제 예제>
+$ spark-submit -&#8211;class org.apache.spark.examples.SparkPi \
+         --master client \
+         -&#8211;deploy-mode cluster \
+         --driver-memory 4g &#8211;\
+         --executor-memory 2g \
+         --executor-cores 1 \
+         --queue myqueue \
+         lib/spark-examples*.jar \
+         10
+
+
+
+<YARN에서 클러스터 모드로 Spark 애플리케이션 실행시키기>
+
+
+ $/path /to/spark/bin/spark-submit &#8211;class path.to.main.Class \
+
+
+
+$ spark-submit -&#8211;class org.apache.spark.examples.SparkPi \
+         --master yarn \
+         -&#8211;deploy-mode cluster \
+         --driver-memory 4g &#8211;\
+         --executor-memory 2g \
+         --executor-cores 1 \
+         --queue myqueue \
+         lib/spark-examples*.jar \
+         10

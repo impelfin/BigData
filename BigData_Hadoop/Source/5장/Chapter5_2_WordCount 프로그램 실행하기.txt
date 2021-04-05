@@ -1,0 +1,26 @@
+<WordCount 프로그램 실행하기>
+
+
+$ hadoop jar $HADOOP_HOME/hadoop*examples.jar
+
+
+
+http://www.gutenberg.org/cache/epub/100/pg100.txt
+
+
+
+[root@hadoop2 sbin]# hdfs dfs -mkdir -p /input/shakes
+
+
+
+[root@hadoop2 sbin]# hdfs dfs -copyFromLocal /tmp/shakespeare.txt /input/shakes/
+
+
+
+[root@hadoop2 sbin]# hdfs dfs -ls /input/shakes/
+
+Found 1 items
+-rw-r--r--    3 root supergroup       5589889 2016-05-24 10:02 /input/shakes/
+shakespeare.txt
+[root@hadoop2 sbin]#
+

@@ -1,0 +1,33 @@
+<병렬로 RDD 생성하기 예제1: 숫자 1~5 값을 가지는 병렬처리 콜랙션을 생성>
+
+val data = Array(1,2,3,4,5)
+val distData = sc.parallelize(data)
+
+
+
+<또다른 예제>
+
+scala> myData = ["Alice","Nick","Sam","Nina"]
+Scala> myRdd = sc.parallelize(myData)
+scala> myRdd.take(2)
+['Alice', 'Nick']
+
+
+
+
+val distData = sc.parallelize(data, 20)
+
+
+
+<텍스트 파일로 RDD 생성>
+
+
+scala> val mydata = sc.textFile("purplecow.txt")
+
+
+
+&#8211; sc.textFile("myfile.txt") &#8211; sc.textFile("mydata/*.log") &#8211; sc.textFile("myfile1.txt,myfile2.txt")
+
+
+
+file://home/test/myfile.txt

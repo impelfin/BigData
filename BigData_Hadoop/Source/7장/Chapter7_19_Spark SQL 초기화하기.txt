@@ -1,0 +1,46 @@
+<Spark SQL 초기화하기>
+
+
+// Import Spark SQL
+import org.apache.spark.sql.hive.HiveContext
+
+
+
+// Create a Spark SQL HiveContext
+val hiveCtx = ...
+// Import the implicit conversions
+import hiveCtx.implicits._
+   Now that you've added the imports, you're ready to create the HiveContext:
+val sc = new SparkContext(...)
+val hiveCtx = new HiveContext(sc)
+
+
+
+<데이터 로딩>
+
+val input = hiveCtx.jsonFile(inputFile)
+// Register the input schema RDD
+input.registerTempTable("tweets")
+
+
+registerTempTable("mytable").
+
+
+
+<데이터 쿼리하기>
+
+
+  // Select tweets based on the retweetCount
+  val topTweets = hiveCtx.sql("SELECT text, retweetCount
+FROM tweets
+ORDER BY retweetCount
+LIMIT 10")
+
+
+
+
+<함수 등록>
+
+
+hiveCtx.udf.register("strLenScala", (_: String).length)
+val tweetLength = hiveCtx.sql("SELECT strLenScala('tweet') FROM tweets LIMIT 10")

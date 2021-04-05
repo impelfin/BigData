@@ -1,0 +1,30 @@
+<Mesos로 작업하기 위해 Spark 설정하기>
+
+<Mesos를 인스톨한다.>
+
+$ sudo apt-get &#8211;y update
+$ sudo apt-get &#8211;y install mesos
+
+
+
+$ hdfs dfs &#8211;put spark-1.4.0-bin-hadoop2.4.tgz spark-1.4.0-bin-hadoop2.4.tgz
+
+
+
+$ export MESOS_NATIVE_LIBRARY=/usr/local/lib/libmesos.so
+$ export SPARK_EXECUTOR_URI=hdfs://localhost:9000/user/hduser/
+spark-1.4.0-bin-hadoop2.4.tgz
+
+
+
+<하둡 클러스터에 Spark 설정하기>
+
+HADOOPCONFDIR : 
+
+export HADOOP_CONF_DIR=/opt/mycompany/hadoop/etc/hadoop
+
+
+
+YARNCONFDIR : 
+
+export YARN_CONF_DIR=/opt/mycompany/hadoop/etc/hadoop

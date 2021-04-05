@@ -1,0 +1,28 @@
+# java &#8211;version
+
+
+# yum remove {java-1.*}
+
+
+$ wget http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javase6-419409.html#jdk-6u31-oth-JPR
+
+
+# cd /usr
+
+
+# tar -xvzf jdk-6u<version>-linux-x64.tar.gz
+
+
+# rpm -qa|grep jdk
+  java-1.6.0-openjdk-devel-1.6.0.0-1.62.1.11.11.90.el6_4.x86_64
+  java-1.6.0-openjdk-1.6.0.0-1.62.1.11.11.90.el6_4.x86_64
+
+
+# ln -s /usr/jdk1.6.0_31/jdk1.6.0_31 /usr/java/default
+# ln -s /usr/java/default/bin/java /usr/bin/java
+
+
+# echo "export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/" > /etc/profile.d/java.sh
+
+
+# source /etc/profile.d/java.sh

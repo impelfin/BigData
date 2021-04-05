@@ -1,0 +1,23 @@
+<HDFS 설정 변경(hdfs-site.xml 파일)>
+
+
+dfs.block.size
+
+
+
+
+<property>
+  <name>dfs.block.size</name>
+  <value>134217728</value>
+</property>
+
+
+
+$ hdfs dfs &#8211;fs    -D dfs.block.size=2684354568 -put local_name hdfs_location
+dfs.datanode.du.reserved
+
+
+<property>
+  <name>dfs.datanode.du.reserved</name>
+  <value>20</value>
+</property>

@@ -1,0 +1,12 @@
+<Mesos에서 Spark 애플리케이션 실행>
+
+val conf = new SparkConf().setMaster("mesos://host:5050")
+val SparkContext = new SparkContext(conf)
+
+
+
+$ spark-shell &#8211;master mesos://host:5050
+
+
+
+conf.set("spark.mesos.coarse", "true")

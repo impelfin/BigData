@@ -1,0 +1,16 @@
+<함수를 파라미터로 넘기기>
+
+
+scala> def toUpper(s):
+           return s.upper()
+scala> mydata = sc.textFile("purplecow.txt")
+scala> mydata.map(toUpper).take(2)
+
+<익명 함수(Anonymouse Functions)>
+
+
+Scala> mydata.map(line => line.toUpperCase()).take(2)
+
+
+
+Scala> mydata.map(_.toUpperCase()).take(2)

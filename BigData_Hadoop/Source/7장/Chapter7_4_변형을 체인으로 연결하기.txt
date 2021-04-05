@@ -1,0 +1,4 @@
+<변형(Transformation)을 체인으로 연결하기>
+
+scala> sc.textFile("purplecow.txt").map(line => line.toUpperCase ()).filter(line
+=> line.startsWith("I").count()

@@ -1,0 +1,53 @@
+<캐시 사용하기>
+
+
+$ hdfs cacheadmin -addPool testPool
+Successfully added cache pool testPool.
+$
+
+
+
+$ hdfs cacheadmin -addDirective -path /user/test.txt -pool testPool
+Added cache directive 1
+$
+
+
+
+$ hdfs cacheadmin -listPools -stats testPool
+Found 1 result.
+NAME      OWNER GROUP MODE               LIMIT MAXTTL         BYTES_NEEDED    BYTES_
+CACHED BYTES_OVERLIMIT FILES_NEEDED FILES_CACHED
+testPool hdfs    hdfs   rwxr-xr-x    unlimited  never                 37565
+37565                 0            1             1
+$
+
+
+
+$ hdfs dfsadmin -report
+...
+Non DFS Used: 0 (0 B)
+DFS Remaining: 94222279700 (87.75 GB)
+DFS Used%: 0.94%
+DFS Remaining%: 99.06%
+Configured Cache Capacity: 1908408320 (1.78 GB)
+Cache Used: 40960 (40 KB)
+Cache Remaining: 1908367360 (1.78 GB)
+Cache Used%: 0.00%
+Cache Remaining%: 100.00%
+Last contact: Tue May 26 15:37:14 EDT 2015
+...
+$
+
+
+
+
+<숏 서킷 로컬 리드(Short-Circuit Local Reads)>
+
+<property>
+  <name>dfs.client.read.shortcircuit</name>
+  <value>true</value>
+</property>
+<property>
+  <name>dfs.domain.socket.path</name>
+  <value>/var/lib/hadoop-hdfs/dn_socket</value>
+</property>

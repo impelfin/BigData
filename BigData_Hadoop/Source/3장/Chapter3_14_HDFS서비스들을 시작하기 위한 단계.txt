@@ -1,0 +1,19 @@
+$ su hdfs
+$ cd /opt/yarn/hadoop2.6.0/sbin
+$./hadoop-daemon.sh start namenode
+starting namenode, logging to /opt/yarn/hadoop-2.6.0/logs/hadoop-hdfs-namenode-
+limulus.out
+[root@hadoop1 sbin]#
+
+
+# 세컨더리 네임노드를 실행할 노드에서 다음을 실행한다. 
+$ ./hadoop-daemon.sh start secondarynamenode
+starting secondarynamenode, logging to /opt/yarn/hadoop-2.6.0/logs/hadoop-hdfs-
+secondarynamenode-limulus.out
+[root@hadoop1 sbin]#
+
+
+[root@hadoop1 sbin]# ./hadoop-daemon.sh start datanode
+starting datanode, logging to /var/log/hadoop/hdfs/hadoop-root-datanode-hadoop1
+.localdomain.out
+[root@hadoop1 sbin]#

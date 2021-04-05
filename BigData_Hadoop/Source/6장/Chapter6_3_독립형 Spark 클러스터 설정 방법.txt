@@ -1,0 +1,25 @@
+<독립형 Spark 클러스터 설정 방법>
+
+
+$ echo "export PATH=$PATH:/path/to/spark/sbin/" >> /home/hduser/.bashrc
+
+
+
+$ /path/to/spark/sbin/start-master.sh
+
+
+
+$ /path/to/spark/sbin/start-slave.sh <master-URL>
+
+
+
+$ /path/to/spark/sbin/stop-master.sh
+$ /path/to/spark/sbin/stop-slave.sh
+
+
+
+$ /path/to/spark/sbin/start-all.sh
+$ /path/to/spark/sbin/stop-all.sh
+
+
+

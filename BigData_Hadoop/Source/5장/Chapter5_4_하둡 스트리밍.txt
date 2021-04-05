@@ -1,0 +1,21 @@
+<하둡 스트리밍>
+
+
+$HADOOP_HOME/bin/hadoop jar $HADOOP_HOME/hadoop-streaming.jar \
+ -input myInputDirs \
+ -output myOutputDir \
+ -mapper /bin/cat \
+ -reducer /bin/wc
+
+
+
+$HADOOP_HOME/bin/hadoop jar $HADOOP_HOME/hadoop-streaming.jar \
+ -input myInputDirs \
+ -output myOutputDir \
+ -mapper org.apache.hadoop.mapred.lib.IdentityMapper \
+ -reducer /bin/wc
+
+
+
+-mapper /usr/local/hadoop/scripts/wc_mapper.php
+-reducer /user/local/hadoop/scripts/wc_reducer.php

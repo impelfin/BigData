@@ -1,0 +1,10 @@
+# cd /root
+# wget http://mirrors.ibiblio.org/apache/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz
+
+
+# md5sum .tmp/hadoop-2.6.0.tar.gz
+
+
+# mkdir &#8211;p /opt/yarn
+# cd /opt/yarn
+# tar -xvzf /root/hadoop-2.6.0.tar.gz

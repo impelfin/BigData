@@ -1,0 +1,33 @@
+<spark-submit 스크립트를 이용하는 방법>
+
+$ spark-submit &#8211;driver-memory 1000M
+
+
+
+val conf = new SparkConf()
+                    .setMaster("local[2]")
+                    .setAppName("CountingSheep")
+val sc = new SparkContext(conf)
+
+
+
+$ spark-submit &#8211;properties-file filename
+
+
+
+spark.master         spark://masternode:7077
+spark.local.dir      /tmp
+spark.ui.port        4444
+
+
+
+<사이트별 기본 설정 파일 사용하기>
+
+
+$SPARK_HOME/conf/spark-defaults.conf
+
+
+
+<Spark 애플리케이션 모니터링>
+
+http://spark_master:18080

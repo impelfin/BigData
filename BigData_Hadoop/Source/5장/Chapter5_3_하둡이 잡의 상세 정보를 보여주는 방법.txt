@@ -1,0 +1,86 @@
+<하둡이 잡의 상세 정보를 보여주는 방법>
+
+
+      [root@hadoop2 sbin]# hadoop jar /opt/yarn/hadoop-2.6.0/share/hadoop/mapreduce/
+          hadoop-mapreduce-examples-2.6.0.jar wordcount /shakes shake_output                               #A
+      16/05/22 10:44:00 INFO input.FileInputFormat: Total input paths to process : 1                       #B
+      16/05/22 10:44:01 INFO mapreduce.JobSubmitter: number of splits:1                                    #B
+      16/05/22 10:44:01 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1440603749764_0001     #C
+      16/05/22 10:44:03 INFO impl.YarnClientImpl: Submitted application   application_1440603749764_0001   #C
+      16/05/22 10:44:03 INFO mapreduce.Job: The url to track the job: http://hadoop1.localdomain:8081/
+          proxy/application_1440603749764_0001/                                                            #D
+      16/05/22 10:44:44 INFO mapreduce.Job: Job job_1440603749764_0001 running in uber mode : false
+      16/05/22 10:44:44 INFO mapreduce.Job: map 0% reduce 0%                                               #E
+      16/05/22 10:45:07 INFO mapreduce.Job: map 67% reduce 0%
+      16/05/22 10:45:17 INFO mapreduce.Job: map 100% reduce 0%
+      16/05/22 10:45:33 INFO mapreduce.Job: map 100% reduce 100%                                           #E
+      16/05/22 10:45:34 INFO mapreduce.Job: Job job_1440603749764_0001 completed successfully              #F
+      16/05/22 10:45:36 INFO mapreduce.Job: Counters: 49                                                   #G
+             File System Counters
+FILE: Number of bytes read=983187
+FILE: Number of bytes written=2178871
+HDFS: Number of bytes read=5590008
+HDFS: Number of bytes written=720972
+HDFS: Number of read operations=6
+
+ HDFS: Number of write operations=2                                                   #G
+               Job Counters
+ Launched map tasks=1                                                                 #H
+ Launched reduce tasks=1
+ Data-local map tasks=1
+ Total time spent by all maps in occupied slots (ms)=30479
+ Total time spent by all reduces in occupied slots (ms)=13064
+ Total time spent by all map tasks (ms)=30479
+ Total time spent by all reduce tasks (ms)=13064
+ Total vcore-seconds taken by all map tasks=30479
+ Total vcore-seconds taken by all reduce tasks=13064
+ Total megabyte-seconds taken by all map tasks=31210496
+ Total megabyte-seconds taken by all reduce tasks=13377536                            #H
+               Map-Reduce Framework
+ Map input records=124787                                                             #I
+ Map output records=904061
+ Map output bytes=8574733
+ Map output materialized bytes=983187
+ Input split bytes=119
+ Combine input records=904061
+ Combine output records=67779
+ Reduce input groups=67779
+ Reduce shuffle bytes=983187
+ Reduce input records=67779                                                           #I
+ Reduce output records=67779
+ Spilled Records=135558                                                               #J
+ Shuffled Maps =1
+               Merged Map outputs=1                                                   #J
+ GC time elapsed (ms)=454                                                             #K
+ CPU time spent (ms)=10520
+ Physical memory (bytes) snapshot=302411776
+ Virtual memory (bytes) snapshot=1870229504
+ Total committed heap usage (bytes)=168497152                                         #K
+
+             File Input Format Counters                                                                    #L
+Bytes Read=5589889                                                                     #L
+             File Output Format Counters                                                                   #M
+Bytes Written=720972                                                                   #M
+      [root@hadoop2 sbin]#
+
+
+
+
+<출력 디렉토리를 확인해보면 잡의 결과를 확인할 수 있다.>
+
+# hdfs dfs &#8211;ls /out/shake_output
+
+
+
+# hdfs dfs &#8211;get /out/shake_output
+
+
+# cat shake_output
+
+
+
+# hdfs dfs &#8211;cat /out/shake_output
+
+
+
+http://rm_host:8088/

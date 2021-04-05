@@ -1,0 +1,30 @@
+[root@hadoop1 sbin]# jps
+4180 NodeManager
+9186 Jps
+3833 NameNode
+3940 DataNode
+3772 SecondaryNameNode
+4108 ResourceManager
+[root@hadoop1 sbin]#
+
+$ /usr/jdk/latest/bin/jps | grep NameNode
+3658 NameNode
+$
+
+$ ps -ef|grep -i NameNode
+$ ps -ef|grep DataNode
+
+
+
+
+
+$ hdfs dfs &#8211;ls /
+
+
+[root@hadoop2 sbin]# hdfs dfs -ls /
+Found 4 items
+drwxr-xr-x    - hdfs supergroup              0   2014-12-26   17:08   /system
+drwxr-xr-x    - hdfs supergroup              0   2015-01-25   16:05   /test
+drwx-wx-wx    - hdfs supergroup              0   2014-12-26   14:39   /tmp
+drwxr-xr-x    - hdfs supergroup              0   2014-12-26   14:39   /user
+[root@hadoop2 sbin]#

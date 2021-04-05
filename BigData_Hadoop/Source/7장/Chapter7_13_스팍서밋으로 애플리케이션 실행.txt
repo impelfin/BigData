@@ -1,0 +1,42 @@
+<spark-submit으로 애플리케이션 실행하기>
+
+$ spark-submit &#8211;class WordCount MyJarFile.jar fileURL
+
+
+
+<Python 프로그램을 spark-submit으로 서밋하는 방법>
+
+$ spark-submit test_script.py
+
+
+
+<도움말을 통해서 옵션 확인하기?
+
+
+$ spark-submit --help
+Usage: spark-submit [options] <app jar | python file> [app arguments]
+Usage: spark-submit --kill [submission ID] --master [spark://...]
+Usage: spark-submit --status [submission ID] --master [spark://...]
+
+  YARN-only:
+ --driver-cores NUM         Number of cores used by the driver, only in cluster mode
+                         (Default: 1).
+--executor-cores NUM     Number of cores per executor (Default: 1).
+--queue QUEUE_NAME       The YARN queue to submit to (Default: "default").
+--num-executors NUM      Number of executors to launch (Default: 2).
+--archives ARCHIVES      Comma separated list of archives to be extracted into the
+                         working directory of each executor.
+  $
+
+
+
+<&#8211;master 플래그>
+
+
+$ spark-submit -&#8211;master spark: //host:7077
+
+
+
+<다섯 개의 쓰레드를 사용해서 로컬에서 Spark 애플리케이션을 실행시키는 방법>
+
+$ spark-submit &#8211;master 'local [5]' --class WordCount MyJarFile.jar fileURL

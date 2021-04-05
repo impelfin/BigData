@@ -1,0 +1,118 @@
+<YARN 설정 수정>
+
+
+<메모리와 관련된 파라미터 설정하기>
+
+yarn.nodemanager.resource.memory-mb:
+
+
+<property>
+   <name>yarn.nodemanager.resource.memory-mb</name>
+   <value>68608</value>
+</property>
+
+
+
+yarn.nodemanager.resource.cpu-vcores:
+
+
+<property>
+    <name>yarn.nodemanager.resource.cpu-vcores</name>
+    <value>24</value>
+</property>
+
+
+
+mapreduce.map.memory.mb 와 mapreduce.reduce.memory.mb: .
+
+<property>
+    <name>mapreduce.map.memory.mb</name>
+    <value>2048</value>
+</property>
+
+<property>
+    <name>mapreduce.reduce.memory.mb</name>
+    <value>2048</value>
+</property>
+
+
+
+<property>
+   <name>mapreduce.map.java.opts</name>
+   <value>-Xmx1536</value>
+</property>
+<property>
+   <name>mapreduce.reduce.java.opts</name>
+   <value>-Xmx1536</value>
+</property>
+
+<name>yarn.nodemanager.vmem-pmem-ratio</name>
+<value>3.0</value>
+
+
+<로깅과 관련된 파라미터>
+
+yarn.log.aggregation-enable: 
+
+
+<property>
+   <name>yarn.log-aggregation-enable</name>
+   <value>true</value>
+</property>
+
+
+
+log-aggregation.retain.seconds: 
+
+<property>
+   <name>yarn.log-aggregation.retain-seconds</name>
+   <value>604800</value>
+</property>
+
+
+
+yarn-nodemanager.remote-apps-log-dir: 
+
+<property>
+   <name>yarn.nodemanager.remote-app-log-dir</name>
+   <value>/tmp/logs</value>
+</property>
+
+
+
+<property>
+   <name>yarn.nodemanager.log-dirs</name>
+   <value>/var/log/hadoop-yarn/container</value>
+</property>
+
+
+
+yarn.nodemanager.local-dirs: 
+
+
+<property>
+    <name>yarn.nodemanager.local-dirs</name>
+    <value>/u12/hadoop/yarn/nm,/u11/hadoop/yarn/nm,
+    /u10/hadoop/yarn/nm,/u09/hadoop/yarn/nm,/u08/hadoop/yarn/nm,
+    /u07/hadoop/yarn/nm,/u06/hadoop/yarn/nm,/u05/hadoop/yarn/nm,
+    /u04/hadoop/yarn/nm,/u03/hadoop/yarn/nm,/u02/hadoop/yarn/nm,
+    /u01/hadoop/yarn/nm
+</value>
+</property>
+
+
+
+yarn.application.classpath: 
+
+
+<property>
+    <name>yarn.application.classpath</name>
+    <value>
+    $HADOOP_CLIENT_CONF_DIR,$HADOOP_CONF_DIR,$HADOOP_COMMON_HOME/*,
+    $HADOOP_COMMON_HOME/lib/*,$HADOOP_HDFS_HOME/*,$HADOOP_HDFS_HOME/lib/*,
+    $HADOOP_YARN_HOME/*,$HADOOP_YARN_HOME/lib/*,/usr/lib/avro/avro.jar,
+    /usr/lib/avro/avro-mapred.jar,
+    /usr/lib/mahout/lib/commons-lang3-3.1.jar
+</value>
+</property>
+

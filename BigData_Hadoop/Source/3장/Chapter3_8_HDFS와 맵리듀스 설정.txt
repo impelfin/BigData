@@ -1,0 +1,11 @@
+<property>
+  <name><attribute></name>
+  <final>true</final>
+</property>
+
+
+<property>
+   <name>dfs.hosts.include</name>
+   <value>/etc/hadoop/conf/hosts.include</value>
+   <final>true</final>
+</property>

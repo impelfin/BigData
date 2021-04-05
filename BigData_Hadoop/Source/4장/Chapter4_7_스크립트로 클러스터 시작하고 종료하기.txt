@@ -1,0 +1,29 @@
+<스크립트로 클러스터 시작하고 종료하기>
+
+# vi startcluster.sh
+#!/bin/bash
+
+ssh   hdfs@hadoop1 'hadoop-daemon.sh start namenode'                            #1
+ssh   hdfs@hadoop2 'hadoop-daemon.sh start standbynamenode'                     #1
+ssh   hdfs@hadoop1 'hadoop-daemon.sh start datanode'                            #2
+ssh   hdfs@hadoop2 'hadoop-daemon.sh start datanode'                            #2
+ssh   hdfs@hadoop3 'hadoop-daemon.sh start datanode'                            #2
+ssh   yarn@hadoop2 'yarn-daemon.sh start resourcemanager'                       #3
+ssh   yarn@hadoop1 'yarn-daemon.sh start nodemanager'                           #4
+ssh   yarn@hadoop2 'yarn-daemon.sh start nodemanager'                           #4
+ssh   yarn@hadoop2 'yarn-daemon.sh start nodemanager'                           #4
+ssh   mapred@hadoop2 'mr-jobhistory-daemon.sh start historyserver'              #5
+
+
+
+$ vi stopcluster.sh
+ssh hdfs@hadoop1 'hadoop-daemon.sh stop namenode'                          #1
+ssh hdfs@hadoop2 'hadoop-daemon.sh stop standbynamenode'                   #1
+ssh hdfs@hadoop1 'hadoop-daemon.sh stop datanode'                          #2
+ssh hdfs@hadoop2 'hadoop-daemon.sh stop datanode'                          #2
+ssh hdfs@hadoop3 'hadoop-daemon.sh stop datanode'                          #2
+ssh yarn@hadoop2 'yarn-daemon.sh stop resourcemanager'                     #3
+ssh yarn@hadoop1 'yarn-daemon.sh stop nodemanager'                         #4
+ssh yarn@hadoop2 'yarn-daemon.sh stop nodemanager'                         #4
+ssh yarn@hadoop2 'yarn-daemon.sh stop nodemanager'                         #4
+ssh mapred@hadoop2 'mr-jobhistory-daemon.sh stop historyserver'            #5

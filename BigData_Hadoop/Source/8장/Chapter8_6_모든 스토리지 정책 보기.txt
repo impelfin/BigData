@@ -1,0 +1,35 @@
+<모든 스토리지 정책 보기>
+
+$ hdfs storagepolicies -listPolicies
+Policy ID Policy Name     Block Placement (n replicas)        Fallback storage for creatio-     Fallback storage for replication
+2         Hot (default)   DISK: -                           none                                ARCHIVE
+5         Warm            DISK: 1, ARCHIVE: n-1               ARCHIVE, DISK                       ARCHIVE, DISK
+7         Cold            ARCHIVE:-                         none                                none
+
+
+
+$ hdfs storagepolicies
+Usage: bin/hdfs storagepolicies [COMMAND]
+          [-listPolicies]
+          [-setStoragePolicy -path <path> -policy <policy>]
+          [-getStoragePolicy -path <path>]
+          [-help <command-name>]
+$
+
+
+
+<스토리지 정책 관리>
+
+
+$ dfsadmin &#8211;setStoragePolicy <path> <policyName>
+
+
+
+$ hdfs dfsadmin &#8211;getStoragePolicy <path>
+
+
+
+<데이터 이동시키기>
+
+
+$ hdfs mover [-p <files/dirs> | -f <local file name>] mover

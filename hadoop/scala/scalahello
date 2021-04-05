@@ -1,0 +1,16 @@
+#!/bin/sh
+
+exec scala "$0" "$@"
+!#
+
+print("given parameter : ")
+args.foreach(arg => print(arg + " "))
+println
+println("given parameter number : " + args.length)
+
+if (args.length >= 2 || args.length < 1) {
+	println("wrong parameter, only 1 parameter")
+	sys.exit
+}
+
+println("Hello " + args(0) + "!")

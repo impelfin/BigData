@@ -1,0 +1,35 @@
+<property>
+  <name>property_name</name>
+  <value>property value </value>
+  <description> </description>   <!-- 필수 아님 -->
+</property>
+
+<기본적인 HDFS 매개변수 설정하기>
+
+
+<property>
+  <name>fs.defaultFS</name>
+  <value>hdfs://hadoop1:8020</value>
+</property>
+
+
+<hadoop.http.staticuser.user 값으로 hdfs를 디폴트 사용자명으로 지정한 것>
+
+<property>
+   <name>hadoop.http.staticuser.user</name>
+   <value>hdfs</value>
+</property>
+hadoop.http.staticuser.user 속성의 디폴트 값은 dr.who이다.
+
+<이외의 유용한 파라미터>
+
+<property>
+  <name>fs.trash.interval</name>
+  <value>1440</value>
+</property>
+
+
+
+<dfs.namenode.data.dir 기본 값>
+
+file://${hadoop.tmp.dir}/dfs/name

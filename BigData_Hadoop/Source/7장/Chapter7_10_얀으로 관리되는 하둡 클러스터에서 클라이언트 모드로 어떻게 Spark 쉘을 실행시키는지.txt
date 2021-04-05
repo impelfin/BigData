@@ -1,0 +1,3 @@
+<얀으로 관리되는 하둡 클러스터에서 클라이언트 모드로 어떻게 Spark 쉘을 실행시키는지>
+
+$ spark-shell --master yarn &#8211;deploy-mode client

@@ -1,0 +1,42 @@
+<HDFS 파라미터 수정하기>
+
+
+<property>
+   <name>dfs.replication</name>
+   <value>3</value>
+</property>
+
+
+
+<property>
+  <name>dfs.namenode.name.dir</name>
+  <value>file:///u01/dfs/nn,file:///u02/dfs/nn</value>
+</property>
+
+
+
+<property>
+   <name>dfs.namenode.edits.dir</name>
+   <value>file:///u01/dfs/nn/edits,file:///u02/dfs/nn/edits</value>
+</property>
+
+
+
+<property>
+  <name>dfs.datanode.data.dir</name>
+  <value>
+  file:///u12/hadoop/dfs,file:///u11/hadoop/dfs,
+  file:///u10/hadoop/dfs,file:///u09/hadoop/dfs,
+  file:///u08/hadoop/dfs,file:///u07/hadoop/dfs,
+  file:///u06/hadoop/dfs,file:///u05/hadoop/dfs,
+  file:///u04/hadoop/dfs,file:///u03/hadoop/dfs,
+  file:///u02/hadoop/dfs,file:///u01/hadoop/dfs
+  </value>
+</property>
+
+
+
+<property>
+    <name>dfs.permissions.superusergroup</name>
+    <value>admingroup</value>
+</property>

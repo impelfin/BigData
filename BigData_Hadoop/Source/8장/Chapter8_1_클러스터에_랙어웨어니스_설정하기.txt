@@ -1,0 +1,24 @@
+<클러스터에 랙-어웨어니스(Rack Awreness) 설정하기>
+
+
+<property>
+  <name>net.topology.script.file.name</name>
+  <value>/etc/hadoop/conf/topology.py</value>
+</property>
+
+
+<topology.py 스크립트>
+
+#!/usr/bin/env python
+import sys
+DEFAULT_RACK = "/prod/default-rack"
+HOST_RACK_FILE = "/etc/hadoop/conf/host-rack.map"
+host_rack = {}
+for line in open(HOST_RACK_FILE):
+   (host, rack) = line.split()
+   host_rack[host] = rack
+for host in sys.argv[1:]:
+   if host in host_rack:
+      print host_rack[host]
+   else:
+      print DEFAULT_RACK

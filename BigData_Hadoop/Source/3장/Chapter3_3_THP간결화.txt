@@ -1,0 +1,8 @@
+$ echo 'never' > defrag_file_pathname
+Short_Story
+
+
+# 레드헷
+echo never > /sys/kernel/mm/redhat_transparent_hugepage/defrag
+# 일반 리눅스
+echo never > /sys/kernel/mm/transparent_hugepage/defrag

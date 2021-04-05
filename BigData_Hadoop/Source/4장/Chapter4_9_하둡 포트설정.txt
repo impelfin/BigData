@@ -1,0 +1,17 @@
+<하둡 서비스, 웹 인터페이스 그리고 포트 설정하기>
+
+http://hadoop1:50070
+
+
+
+<YARN 웹 인터페이스>
+
+
+
+http://<host_name>:8088
+
+
+
+
+It looks like you are making an HTTP request to a Hadoop IPC port. This is not the
+correct port for the web interface on this daemon.

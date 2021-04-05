@@ -1,0 +1,23 @@
+<클러스터를 시작하기>
+
+
+$ su - hdfs 
+$ /opt/yarn/hadoop2-6-0/bin/namenode -format
+fig_04_07.png
+
+
+
+
+$./hadoop-daemon.sh start namenode                         #1
+$./yarn-daemon.sh start resourcemanager                    #2
+
+
+
+$./hadoop-daemon.sh start secondarynamenode                #3
+$./mr-jobhistory-daemon.sh start historyserver             #4
+
+
+
+
+$./hadoop-daemon.sh start datanode                         #1
+$./yarn-daemon.sh start nodemanager                        #2

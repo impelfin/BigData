@@ -1,0 +1,15 @@
+<캐시 지시자>
+
+
+$ hdfs cacheadmin &#8211;addDirective &#8211;path <path> -pool <pool-name> {force}
+[-replication <replication>] [-ttl <time-to-live>]
+
+
+-removeDirective, -removeDirectives 
+
+
+
+<캐시 풀>
+
+
+$ hdfs cacheadmin &#8211;addPool <name> [-owner <owner>] [-group <group>] [-mode <mode>] [-limit <limit>] [-maxTtl <maxTtl>

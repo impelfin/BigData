@@ -1,0 +1,98 @@
+<Spark 설치하기>
+
+(* http://spark.apache.org/downloads.html에 있는 Spark 다운로드 페이지로 이동한다.)
+
+
+$ wget http://d3kbcqa49mib13.cloudfront.net/spark-1.4.0-bin-hadoop2.4.tgz
+$ tar &#8211;zxf spark-1.4.0-bin-hadoop2.4.tgz
+$ sudo mv spark-1.4.0-bin.-hadoop2.4 spark
+
+
+$ sudo mkdir &#8211;p /opt/mycompany
+$ sudo mv spark /opt/mycompany
+
+
+
+$ sudo chown &#8211;R root:root /opt/mycompany/spark
+$ sudo chmod &#8211;R 755 /opt/mycompany/spark
+
+
+
+$ cd /opt/mycompany/spark
+$ sudo mv spark/conf/* /etc/spark
+$ sudo ln &#8211;s /etc/spark conf
+
+
+
+$ echo "export PATH=$PATH:/opt/mycompany/spark/bin">> home/hduser/.bashrc
+Spark를 위한 로그와 tmp 디렉토리를 만든다.
+
+$ sudo mkdir &#8211;p /var/log/spark
+$ sudo chown &#8211;R hduser:hduser /var/log/spark
+$ sudo mkdir /tmp/spark
+
+
+
+$ cd /etc/spark
+$ echo "export HADOOP_CONF_DIR=/opt/mycompany/hadoop/etc/hadoop" >> spark-
+env.sh
+$ echo "export YARN_CONF_DIR=/opt/mycompany/hadoop/etc/hadoop" >> spark-
+env.sh
+$ echo "export SPARK_LOG_DIR=/var/log/spark" >> spark-env.sh
+$ echo 'export SPARK_WORKER_DIR=/tmp/spark" >> spark-env.sh
+
+
+
+<pyspark 인터프리터를 실행시켜서 Spark가 잘 설치되었는지 테스트>
+
+$ pyspark
+Python 2.7.10 (default, Jun 23 2015, 21:58:51)
+[GCC 4.2.1 Compatible Apple LLVM 6.1.0 (clang-602.0.53)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+[... snip ...]
+Welcome to
+   ____              __
+  / __/__ ___ _____/ /__
+ _\ \/ _ \/ _ '/ __/ '_/
+/__ / .__/\_,_/_/ /_/\_\   version 1.5.2
+   /_/
+
+
+Using Python version 2.7.10 (default, Jun 23 2015 21:58:51)
+SparkContext available as sc, HiveContext available as sqlContext.
+>>>
+
+
+
+<Spark의 예제들>
+
+
+./bin/run-example SparkPi 10
+
+
+<스파크로 파이썬 실행하기>
+./bin/spark-submit     examples/src/main/python/pi.py 10
+
+
+
+<Spark를 사용하거나 YARN과 Hive을 통합하려고 할 때 컴파일이 필요하다. 단계 2와 단계 3 사이에 다음 단계를 추가해야 한다.>
+
+$ mvn &#8211;Pyarn &#8211;Phadoop-2.4 &#8211;Dhadoop.version=2.4.0 &#8211;Phive &#8211;DskipTests clean package
+
+
+
+<Pi 값을 구하기 위해 Scala나 자바 샘플 프로그램을 실행>
+
+./bin/run-example SparkPi 10
+
+
+
+./bin/spark-submit examples/src/main/python/pi.py 10
+
+
+
+<Spark 로그의 상세 정도 줄이기>
+
+$ cp $SPARK_HOME/conf/log4j.properties.template \
+   $SPARK_HOME/conf/log4j.properties

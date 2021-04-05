@@ -1,0 +1,23 @@
+<하둡 사용자계정 설정>
+# groupadd hadoop           # 하둡 그룹 생성
+# useradd &#8211;g hadoop yarn    # yarn은 YARN 관련 서비스를 담당한다. 
+# useradd &#8211;g hadoop hdfs    # hdfs는 HDFS 서비스를 담당한다. 
+# useradd &#8211;g hadoop mapred  # mapred은 맵리듀스 서비스를 담당한다.
+
+
+<디렉토리 생성>
+
+
+# mkdir &#8211;p /var/data/hadoop/hdfs/nn
+# mkdir &#8211;p /var/data/hadoop/hdfs/snn
+# mkdir /var/data/hadoop/hdfs/dn
+아래의 명령으로 디렉토리 소유권을 변경해야한다.
+
+# chown hdfs:hadoop /var/data/hadoop/hdfs
+
+
+# mkdir /var/log/hadoop-2.6.0/logs
+
+
+# chmod 755 logs
+# chown yarn:hadoop . 

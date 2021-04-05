@@ -1,0 +1,64 @@
+<Hive 테이블로 작업하기>
+
+
+CREATE TABLE page_view(viewTime INT, userid BIGINT,
+page_url STRING, referrer_url STRING,
+ip STRING COMMENT 'IP Address of the User')
+COMMENT 'This is the page view table'
+PARTITIONED BY(dt STRING, country STRING)
+STORED AS SEQUENCEFILE;
+
+
+
+SHOW TABLES;
+
+
+
+DESCRIBE page_view;
+
+
+
+DESCRIBE EXTENDED page_view;
+
+
+
+<데이터를 Hive로 로딩 시키기>
+
+
+CREATE EXTERNAL TABLE page_view_stg(viewTime INT, userid BIGINT,
+                 page_url STRING, referrer_url STRING,
+                 ip STRING COMMENT 'IP Address of the User',
+                 country STRING COMMENT 'country of origination')
+COMMENT 'This is the staging page view table'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '44' LINES TERMINATED BY '12'
+STORED AS TEXTFILE
+LOCATION '/user/data/staging/page_view';
+
+
+
+ hadoop dfs -put /tmp/pv_2016-03-09.txt /user/data/staging/page_view
+
+
+
+FROM page_view_stg pvs
+INSERT OVERWRITE TABLE page_view PARTITION (dt='2016-03-09', country='US')
+SELECT pvs.viewTime, pvs.userid, pvs.page_url, pvs.referrer_url, null, null, pvs.ip
+WHERE pvs.country = 'US';
+
+
+
+<Hive 쿼리하기>
+
+
+INSERT OVERWRITE TABLE xyz_com_page_views
+SELECT page_views.*
+FROM page_views
+WHERE page_views.date >= '2016-03-01' AND page_views.date <= '2016-03-09' AND
+      page_views.referrer_url like '%xyz.com';
+
+
+
+INSERT OVERWRITE TABLE pv_users
+SELECT pv.*, u.gender, u.age
+FROM user u JOIN page_view pv ON (pv.userid = u.id)
+WHERE pv.date = '2016-03-09';

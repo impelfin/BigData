@@ -1,0 +1,5 @@
+<SparkÀÇ WordCount>
+
+val f = sc.textFile(inputPath)
+val w = f.flatMap(l => l.split(" ").map(word => (word, 1)).cache()
+w.reduceByKey(_ + _).saveAsText(outputPath)

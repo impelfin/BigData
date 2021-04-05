@@ -1,0 +1,9 @@
+<Spark의 지연 실행 모델>
+
+
+scala>    val mydata =sc.textFile("purplecow.txt")
+scala>    val mydata_uc = mydata.map(line => line.toUpperCase())
+Scala>    val mydata_filt = mydata_uc.filter(line => line.startWith("I")
+Scala>    mydata_filt.count()
+3
+scala>

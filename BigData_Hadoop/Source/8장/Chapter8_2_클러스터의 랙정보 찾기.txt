@@ -1,0 +1,57 @@
+<클러스터의 랙 정보 찾기>
+
+10.1.1.160,/rack01
+10.1.1.161,/rack01
+10.1.1.162,/rack02
+10.1.1.163,/rack02
+10.1.1.164,/rack03
+10.1.1.165,/rack03
+
+
+
+$ hdfs dfsadmin &#8211;printTopology
+
+Rack: /prod011
+    10.192.0.21:50010    (prod011node01)
+    10.192.0.22:50010    (prod011node02)
+    10.192.0.23:50010    (prod011node03)
+    10.192.0.24:50010    (prod011node04)
+...
+Rack: /prod012
+    10.192.0.51:50010    (prod012node01)
+    10.192.0.52:50010    (prod012node02)
+    10.192.0.53:50010    (prod012node03)
+    10.192.0.54:50010    (prod012node04)
+...
+$
+
+
+
+<클러스터의 랙 정보 수집하기>
+
+
+$ hdfs fsck /
+...
+Number of data-nodes:            24
+Number of racks:                  3
+FSCK ended at Mon Mar 02 22:11:50 CST 2015 in 42261 milliseconds
+
+The filesystem under path '/' is HEALTHY
+$
+
+
+
+
+$ hdfs dfsadmin -report
+Name: 10.192.0.61:50010
+Hostname: hadoop012node011
+Rack: /prod02
+...
+Last contact: Mon Mar 02 22:13:49 CST 2015
+
+Name: 10.192.0.59:50010
+Hostname: hadoop012node09
+Rack: /prod01
+...
+Last contact: Mon Mar 02 22:13:48 CST 2015
+$

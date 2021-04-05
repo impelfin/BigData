@@ -1,0 +1,84 @@
+<Spark와 데이터 액세스>
+
+
+scala> val words = sc.textFile(file://home/bduser/words)
+
+
+<텍스트 파일에서 데이터에 접근하기>
+
+scala> val words = sc.textFile("hdfs://localhost:9000/user/hduser/words")
+
+
+
+<Scala를 이용한 완전한 WordCount 프로그램>
+
+scala> sc.textFile("hdfs://localhost:9000/user/hduser/words"). flatMap(
+_.split("\\W+")).map( w => (w,1)). reduceByKey( (a,b) => (a+b)).foreach(println)
+
+
+
+<gzip 포맷 (.gz) 으로 압축된 파일들을 다운로드해서 HDFS로 로드하는 방법>
+
+
+
+$ wget &#8211;r ftp://ftp.ncdc.noaa.gov/pub/data/noaa/
+
+
+$ hdfs dfs &#8211;put ftp.ncdc.noaa.gov/pub/data/noaa weather/
+
+
+scala> val weatherFileRDD = sc.wholeTextfiles
+("hdfs://localhost:9000/user/hduser//weather/1950")
+
+
+scala> val weatherRDD = weatherFileRDD.cache
+
+
+scala> val firstElement = weatherRDD.first
+
+
+scala> val firstValue = firstElement._2
+
+
+scala> Val firstVals = firstValue.split(\\n)
+
+
+scala> val windSpeed = firstVals.map(line => line.substring(65,69))
+
+
+
+<관계형 데이터베이스에서 데이터 로드하기>
+
+MySQL 커넥터인 mysql-connector-java-x.x.xx-bin.jar를 http://dev.mysql.com/downloads/connector/j/ 에서 다운로드 받는다.
+
+
+
+$ spark-shell &#8211;jars /path-to-mysql-jdar/mysql-connector-java-5.1.29-bin.jar
+
+
+
+scala> val url="jdbc:mysql://localhost:3306/hadoopdb"
+scala> val username = "hduser"
+scala> val password = "******"
+
+
+
+scala> import org.apache.spark.rdd.JdbcRDD
+scala> import java.sql.{Connection, DriverManager, ResultSet}
+scala> Class.forName("com.mysql.jdbc.Driver").newInstance
+
+
+
+scala> val myRDD = new JdbcRDD( sc, () =>
+DriverManager.getConnection(url,username,password) ,
+"select first_name,last_name,gender from person limit ?, ?",
+1, 5, 2, r => r.getString("last_name") + ", " + r.getString("first_name"))
+
+
+
+scala> myRDD.count
+scala> myRDD.foreach(println)
+
+
+
+scala> myRDD.saveAsTextFile("hdfs://localhost:9000/user/hduser/person")

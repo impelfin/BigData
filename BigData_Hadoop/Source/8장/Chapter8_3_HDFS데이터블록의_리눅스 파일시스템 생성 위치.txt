@@ -1,0 +1,40 @@
+<HDFS 데이터 블록의 리눅스 파일 시스템 생성되는 위치>
+
+/[mountpoint}/dfs/dn/current/{blockpool}/current
+/[mountpoint}/dfs/dn/current/{blockpool}/previous
+
+
+
+# cd current
+# pwd
+/u04/hadoop/dfs/current/BP-2077913507-10.192.0.21-1357858111062/current
+# ls
+dfsUsed finalized rbw VERSION
+# ls -altr
+total 32
+drwxr-xr-x 258 hdfs hadoop 12288 Apr 25 21:09 finalized
+-rw-r--r--   1 hdfs hadoop    27 May 19 10:57 dfsUsed
+drwxr-xr-x   4 hdfs hadoop 4096 May 19 10:57 .
+-rw-r--r--   1 hdfs hadoop   143 May 19 10:58 VERSION
+drwxr-xr-x   4 hdfs hadoop 4096 May 19 10:58 ..
+drwxr-xr-x   2 hdfs hadoop 4096 May 26 03:20 rbw
+
+# cd /u04/hadoop/dfs/current/BP-2077913507-10.192.0.21-1357858111062/current/
+finalized/subdir210/subdir13
+# ls -altr
+total 24
+-rw-r--r--   1 hdfs hadoop   2053323 May 11 13:05 blk_1096785957_1099623703765.meta
+-rw-r--r--   1 hdfs hadoop 262824271 May 11 13:05
+drwxr-xr-x   2 hdfs hadoop      4096 May 11 13:05 .
+[root@hadoop011node16 subdir13]#
+
+
+
+<업그레이드를 마무리하기>
+
+$ hdfs dfsadmin &#8211;finalizeUpgrade
+
+
+
+INFO org.apache.hadoop.hdfs.server.common.Storage: Finalizing upgrade for storage
+directory

@@ -1,0 +1,15 @@
+YARN_RESOURCEMANAGER_OPTS               // 레소스매니저 데몬
+HADOOP_NAMENODE_OPTS                    // 네임노드 데몬
+HADOOP_DATANODE_OPTS                    // 데이터노드 데몬
+YARN_NODEMANAGER_OPTS                   // 노드 메니저 데몬
+HADOOP_SECONDARYNAMENODE_OPTS           // 세컨더리 네임노드 데몬
+
+
+HADOOP_NAMENODE_OPTS="-XX:+UseParallelGC"
+
+
+YARN_RESOURCEMANAGER_OPTS = -Xmx4g               // 리소스매니저 데몬
+HADOOP_NAMENODE_OPTS = -Xmx4g                    // 노드 네임 데몬
+HADOOP_DATANODE_OPTS = -Xmx4g                    // 데이터노드 데몬
+YARN_NODEMANAGER_OPTS = -Xmx1g                   // 노드매니저 데몬
+HADOOP_SECONDARYNAMENODE_OPTS = -Xmx4g         // 세컨더리 네임노드 데몬

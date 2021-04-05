@@ -1,0 +1,49 @@
+표 4.1 기본 하둡 서비스의 포트 번호
+
+서비스	기본 포트	프로토콜	설명 및 설정 파라미터
+ResourceManager	8088	http	리소스매니저의 웹 UI, yarn.resourcemanager.webapp.address
+NodeManager web UI	8042	http	노드매니저의 웹UI, yarn.nodemanager.webapp.address
+NodeManager	8040	http	리소스 지역화를 위한 TPC 포트, yarn.nodemanager.localizer.address
+History Job Server UI	19888	http	잡 히스토리 웹 UI, mapreduce.jobhistory.webapp.address
+JobHistoryServer	10020	http	잡 히스토리를 조회하기 위한 RPC 포트, mapreduce.jobhistory.address
+ResourceManager UI	8031	http	YARN 리소스매니저, yarn.resourcemanager.resource-tracker.address
+ResourceManager	8033	http	리소스매니저의 관리자 인터페이스, yarn.resourcemanager.admin.address
+ResourceManager	8032	http	클라이언트의 앱 등록이 사용되는 포트, yarn.resourcemanager.address
+ResourceManager	8030	http	어플리케이션마스터를 위한 스케줄러 RPC 포트, yarn.resourcemanager.scheduler.address
+ShuffleHandler	13562	 	맵 아웃풋 서플에 사용되는 포트(맵 리듀스 서비스), mapreduce.shuffle.port
+HiveServer2	10000	thrift	Hive에 접근하기 위한 포트, 환경 변수 HIVEPORT로 포트 설정
+Hive metastore	9083	thrift	메타 데이터 접근을 위한 서비스, hive.metastore.uris
+ZooKeeper Server	2888	 	ZooKeeper 서비스와의 통신을 위한 포트, hbase.zookeeper.peerport
+ZooKeeper Server	3888	 	ZooKeeper 서비스와의 통신을 위한 포트, hbase.zookeeper.leaderport
+WebHcat Server	50111	http	Hcatalog나 다른 하둡 서비스를 위한 웹 API, templeton.port
+MySQL	3306	http	MqSQL 데이터베이스 포트
+
+
+https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_Reference_Guide/content/reference_chap2.html
+
+
+
+<바인드 예외>
+java.net.BindException: Address already in use
+
+
+
+
+표 4.2 HDFS 서비스에서 사용하는 포트들
+서비스	기본 포트	프로토콜	설명 및 설정 파라미터
+NameNode web UI	50070	http	HDFS 웹 UI, dfs.namenode.http.address
+NameNode web UI	50470	https	HDFS 웹 UI(보안 포트), dfs.namenode.https.address
+NameNode	8020/9000	ipc	기본 파일 시스템에 대한 URI, fs.defaultFS
+DataNode	50075	http	데이터노드 웹 UI, dfs.datanode.http.address
+DataNode (Secure)	50475	https	HTTPS 서비스, dfs.datanode.https.address
+DataNode	50010	http	데이터 전송, dfs.datanode.address
+DataNode	50020	Ipc	블록 메타데이터 오퍼레이터, dfs.datanode.ipc.address
+DataNode	0.0.0.0:8010	ipc	메타데이터 오퍼레이터, dfs.datanode.ipc.address
+Secondary NameNode	50090	http	세컨더리 네임노드 UI
+
+
+
+<property>
+   <name>yarn.resourcemanager.bind-host</name>
+   <value>0.0.0.0</value>
+</property>.

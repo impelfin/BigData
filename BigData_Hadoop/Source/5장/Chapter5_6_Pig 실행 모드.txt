@@ -1,0 +1,34 @@
+
+<Pig 실행 모드>
+
+
+$ pig &#8211;x local
+...
+grunt>
+
+
+$ pig local &#8211;x test.pig
+
+
+
+$ pig &#8211;x mapreduce
+grunt>
+
+
+
+$ pig &#8211;x mapreduce test.pig
+
+
+<간단한 Pig의 예시>
+
+
+A = LOAD ' /input.txt';
+B = FOREACH A generate FLATTEN (TOKENIZE(chararray)$0)) as word;
+C = FOREACH C generate COUNT(b), GROUP;
+STORE D into ' /wordcount';
+
+
+
+<실행>
+$ hdfs dfs copyFromLocal input.txt input/input.txt /
+              bin/pig &#8211;x mapreduce wordcount.pig

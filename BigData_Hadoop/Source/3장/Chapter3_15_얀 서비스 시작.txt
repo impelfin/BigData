@@ -1,0 +1,9 @@
+# su &#8211; yarn
+$ cd /opt/yarn/hadoop-2.6.0/sbin
+$ ./yarn-daemon.sh start resourcemanager
+starting resourcemanager, logging to /opt/yarn/hadoop-2.6.0/logs/yarn-yarn-
+resourcemanager-limulus.out
+$ ./yarn-daemon.sh start nodemanager
+starting nodemanager, logging to /opt/yarn/hadoop-2.6.0/logs/yarn-yarn-
+nodemanager-limulus.out
+$ ./mr-jobhistory-daemon.sh start historyserver
