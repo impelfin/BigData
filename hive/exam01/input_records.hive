@@ -1,0 +1,2 @@
+LOAD DATA LOCAL INPATH './sample.txt'
+OVERWRITE INTO TABLE records;

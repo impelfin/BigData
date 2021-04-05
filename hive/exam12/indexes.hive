@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS users_extended;
+
+CREATE TABLE users_extended (id INT, name STRING, gender STRING)
+ROW FORMAT DELIMITED
+  FIELDS TERMINATED BY '\t'
+STORED AS TEXTFILE;
+
+LOAD DATA LOCAL INPATH './users_extended.txt'
+OVERWRITE INTO TABLE users_extended;
+
+CREATE INDEX users_index
+ON TABLE users_extended (gender)
+AS 'BITMAP' WITH DEFERRED REBUILD;
+ALTER INDEX users_index ON users_extended REBUILD;
+
+SELECT * FROM users_extended WHERE gender = 'F';

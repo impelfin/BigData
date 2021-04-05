@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (id INT, name STRING)
+ROW FORMAT DELIMITED
+	FIELDS TERMINATED BY '\t' 
+STORED AS TEXTFILE;
+
+LOAD DATA LOCAL INPATH './users.txt'
+OVERWRITE INTO TABLE users;
+
+dfs -cat /user/hive/warehouse/users/users.txt;
+
+DROP TABLE IF EXISTS bucketed_users;
+
+CREATE TABLE bucketed_users (id INT, name STRING)
+CLUSTERED BY (id) INTO 4 BUCKETS;

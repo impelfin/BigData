@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS external_table;
+
+CREATE EXTERNAL TABLE external_table (no int, name STRING)
+ROW FORMAT DELIMITED
+	FIELDS TERMINATED BY '\t' 
+STORED AS TEXTFILE
+LOCATION '/output/external_table';
+
+LOAD DATA LOCAL INPATH './tmp.txt' INTO TABLE external_table;

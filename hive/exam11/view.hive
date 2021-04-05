@@ -1,0 +1,30 @@
+DROP TABLE IF exists records2;
+
+CREATE TABLE records2 (station STRING, year STRING, temperature INT, quality INT)
+ROW FORMAT DELIMITED
+  FIELDS TERMINATED BY '\t'
+STORED AS TEXTFILE;
+
+LOAD DATA LOCAL INPATH './sample2.txt'
+OVERWRITE INTO TABLE records2;
+
+DROP VIEW IF exists valid_records;
+
+CREATE VIEW valid_records
+AS 
+SELECT * 
+FROM records2
+WHERE temperature != 9999
+	AND (quality = 0 OR quality = 1 OR quality = 4 OR quality = 5 OR quality = 9);
+
+DROP VIEW IF exists max_temeratures;
+
+CREATE VIEW max_temperatures (station, year, max_temperature) 
+AS 
+SELECT station, year, MAX(temperature)
+FROM valid_records 
+GROUP BY station, year;
+
+SELECT station, year, AVG(max_temperature)
+FROM max_temperatures
+GROUP BY station, year;

@@ -1,0 +1,3 @@
+SELECT ts, dt, line 
+FROM logs
+WHERE country='GB'; 

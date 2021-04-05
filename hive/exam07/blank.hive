@@ -1,0 +1,21 @@
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (id INT, name STRING)
+ROW FORMAT DELIMITED
+	FIELDS TERMINATED BY '\t' 
+STORED AS TEXTFILE;
+
+LOAD DATA LOCAL INPATH './users.txt'
+OVERWRITE INTO TABLE users;
+
+SELECT * FROM users; 
+
+DROP TABLE IF EXISTS users_new;
+
+CREATE TABLE users_new LIKE users;
+
+INSERT INTO TABLE users_new 
+  SELECT * FROM users
+  WHERE id = 2;
+
+SELECT * FROM users_new; 
