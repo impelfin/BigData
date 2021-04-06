@@ -39,6 +39,14 @@ spark-3.1.1-bin-hadoop2.7.tgz
 https://spark.apache.org/downloads.html
 https://www.apache.org/dyn/closer.lua/spark/spark-2.4.7/spark-2.4.7-bin-hadoop2.7.tgz
 
+# Apache HBase
+hbase-2.2.6-bin.tar.gz
+https://www.apache.org/dyn/closer.lua/hbase/2.2.6/hbase-2.2.6-bin.tar.gz
+
+# Apache ZooKeeper
+3.7.0-bin.tar.gz
+https://downloads.apache.org/zookeeper/zookeeper-3.7.0/apache-zookeeper-3.7.0-bin.tar.gz
+
 # Apache Maven
 https://maven.apache.org/download.cgi
 https://downloads.apache.org/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz
