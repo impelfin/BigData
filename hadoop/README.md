@@ -6,6 +6,11 @@ https://archive.apache.org/dist/hadoop/common/hadoop-2.9.0/hadoop-2.9.0.tar.gz
 jdk-8u281-linux-x64.tar.gz
 https://www.oracle.com/kr/java/technologies/javase/javase-jdk8-downloads.html
 
+# Apache Avro
+avro-src-1.10.2.tar.gz 
+https://downloads.apache.org/avro/avro-1.10.2/
+https://downloads.apache.org/avro/avro-1.10.2/avro-src-1.10.2.tar.gz
+
 # Apache Hive
 apache-hive-2.3.8-bin.tar.gz
 https://downloads.apache.org/hive/hive-2.3.8/apache-hive-2.3.8-bin.tar.gz
