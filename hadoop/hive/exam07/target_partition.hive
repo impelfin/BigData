@@ -18,14 +18,4 @@ PARTITION (dt='2001-01-01')
   SELECT id, name 
   FROM users;
 
-DROP TABLE IF EXISTS target_new;
-
-CREATE TABLE target_new (id INT, name STRING)
-PARTITIONED BY (dt STRING);
-
-INSERT OVERWRITE TABLE target
-PARTITION (dt)
-  SELECT id, name, dt
-  FROM target; 
-
-SELECT * FROM target_new; 
+SELECT * FROM target; 
