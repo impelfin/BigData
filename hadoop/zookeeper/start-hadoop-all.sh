@@ -35,4 +35,13 @@ sleep 5s
 mr-jobhistory-daemon.sh start historyserver
 sleep 2s
 
+start-master.sh --webui-port 18080
+sleep 2s
+
+start-hbase.sh
+sleep 2s
+
+zkServer.sh start
+sleep 2s
+
 jps

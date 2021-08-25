@@ -1,5 +1,23 @@
 #!/bin/bash
 
+stop-dfs.sh
+sleep 5s
+
+stop-yarn.sh
+sleep 5s
+
+mr-jobhistory-daemon.sh stop historyserver
+sleep 2s
+
+stop-master.sh
+sleep 2s
+
+stop-hbase.sh
+sleep 2s
+
+zkServer.sh stop
+sleep 2s
+
 namenode=$(ps -ef | grep 'NameNode')
 datanode=$(ps -ef | grep 'DataNode')
 secondarynamenode=$(ps -ef | grep 'SecondaryNameNode')
@@ -25,14 +43,5 @@ do
 		echo running process not found. 
 	fi
 done
-
-start-dfs.sh
-sleep 5s
-
-start-yarn.sh
-sleep 5s
-
-mr-jobhistory-daemon.sh start historyserver
-sleep 2s
 
 jps
